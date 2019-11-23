@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset =UTF-8">
+    <title>确认收货页面</title>
+    <script src="study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+</head>
+<style>
+    /*
+    导航样式*/
+    body {
+        font-size: 12px;
+        font-family: Arial;
+    }
+
+    a {
+        color: #999;
+    }
+
+    .redColor {
+        color: #C40000 !important;
+    }
+
+    nav.top {
+        background-color: #f2f2f2;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+    nav.top span, nav.top a {
+        color: #999;
+        margin: 0px 10px 0px 10px;
+    }
+
+    nav.top a:hover {
+        color: #C40000;
+        text-decoration: none;
+    }
+
+    /*    搜索*/
+    div.simpleSearchDiv {
+        background-color: #C40000;
+        width: 300px;
+        margin: 10px 20px 40px;
+        padding: 1px;
+        height: 40px;
+        display: block;
+    }
+
+    div.simpleSearchDiv input {
+        width: 225px;
+        border: 1px solid transparent;
+        height: 34px;
+        margin: 2px;
+        outline: none;
+    }
+
+    div.simpleSearchDiv button {
+        width: 60px;
+        border: 1px solid transparent;
+        background-color: #C40000;
+        color: white;
+        font-size: 14px;
+    }
+
+    div.searchBelow {
+        margin-top: 3px;
+        margin-left: -20px;
+    }
+
+    div.searchBelow span {
+        color: #999;
+    }
+
+    div.searchBelow a {
+        padding: 0px 20px 0px 20px;
+        font-size: 14px;
+    }
+
+    img.simpleLogo {
+        position: absolute;
+        left: 10px;
+        top: 50px;
+        width: 140px;
+    }
+
+    body {
+        font-size: 12px;
+        font-family: Arial;
+    }
+
+    a {
+        color: #999;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #C40000;
+    }
+
+
+    /*    脚本上样式*/
+    div.footer {
+        margin: 0px 0px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: #e7e7e7;
+    }
+
+    div.footer_ensure {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    div.footer_desc {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: #e7e7e7;
+        padding-top: 30px;
+        margin: 0px 20px;
+    }
+
+    div.footer_desc div.descColumn {
+        width: 20%;
+        float: left;
+        padding-left: 15px;
+    }
+
+    div.footer_desc div.descColumn span.descColumnTitle {
+        color: #646464;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    div.footer_desc a {
+        display: block;
+        padding-top: 3px;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #C40000;
+    }
+
+    /*    脚本下样式*/
+
+    div.footer {
+        margin: 0px 0px;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: #e7e7e7;
+    }
+
+    div.copyright {
+        background-color: black;
+        border-top-style: solid;
+        border-top-width: 2px;
+        border-top-color: #C40000;
+    }
+
+    div.copyright span.slash {
+        color: white;
+    }
+
+    div.footer div.copyright div.white_link a {
+        color: white;
+        padding: 0px 5px;
+    }
+
+    div.footer div.copyright div.white_link {
+        padding: 10px 0px;
+        margin-left: 10px;
+    }
+
+    div.license {
+        margin-left: 10px;
+        padding-bottom: 30px;
+    }
+
+    div.license span {
+        color: #A4A4A4;
+    }
+
+    div.license div.copyRightYear {
+        margin: 10px 0px;
+        color: #686868;
+    }
+
+    img.cateye {
+        margin-left: 20px;
+    }
+
+    /*确认收货页面支付*/
+    body, table {
+        font-size: 12px;
+        font-family: Arial;
+    }
+
+    div.confirmPayPageDiv {
+        max-width: 1013px;
+        margin: 10px auto;
+    }
+
+    div.confirmPayImageDiv {
+        margin: 5px auto 80px auto;
+        width: 900px;
+        position: relative;
+    }
+
+    div.confirmPayImageDiv div {
+        color: #999999;
+    }
+
+    div.confirmPayTime3 {
+        position: absolute;
+        top: 100px;
+        left: 400px;
+    }
+
+    div.confirmPayTime2 {
+        position: absolute;
+        top: 100px;
+        left: 190px;
+    }
+
+    div.confirmPayTime1 {
+        position: absolute;
+        top: 100px;
+        left: -20px;
+    }
+
+    div.confirmPayOrderInfoText {
+        margin: 10px 10px 0px 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #ADC8E6;
+    }
+
+    div.confirmPayOrderItemDiv {
+        margin: 0px 20px;
+    }
+
+    div.confirmPayOrderItemText {
+        margin: 20px 10px;
+        font-size: 14px;
+        font-weight: normal;
+        color: black;
+    }
+
+    table.confirmPayOrderItemTable {
+        border: 1px solid #dddddd;
+        width: 100%;
+    }
+
+    table.confirmPayOrderItemTable thead {
+        background-color: #e8f2ff;
+        height: 33px;
+    }
+
+    table.confirmPayOrderItemTable tr {
+        border: 1px solid #dddddd;
+    }
+
+    table.confirmPayOrderItemTable th, table.confirmPayOrderItemTable td {
+        text-align: center;
+    }
+
+    table.confirmPayOrderItemTable td {
+        padding: 20px;
+    }
+
+    td.confirmPayOrderItemProductLink {
+        text-align: left !important;
+    }
+
+    span.conformPayProductPrice {
+        font-size: 18px;
+        font-weight: bold;
+        color: #666666;
+    }
+
+    span.confirmPayOrderItemSumPrice {
+        color: #C40000;
+    }
+
+    a {
+        color: #999;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #C40000;
+    }
+
+    /*    确认收货页面2*/
+    div.confirmPayOrderDetailDiv {
+        margin: 40px;
+    }
+
+    table.confirmPayOrderDetailTable {
+        width: 100%;
+        border-top: 1px solid #dddddd;
+    }
+
+    table.confirmPayOrderDetailTable td {
+        padding: 8px;
+        color: black;
+        font-size: 14px;
+    }
+
+    span.confirmPayOrderDetailWangWangGif {
+        display: inline-block;
+        width: 67px;
+        height: 22px;
+        background-image: url("image/site/wangwang.gif");
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        position: relative;
+        left: 2px;
+    }
+
+    div.confirmPayButtonDiv {
+        border: 1px solid #f58b0f;
+        margin: 20px;
+    }
+
+    div.confirmPayWarning {
+        margin: 20px 80px;
+        font-size: 18px;
+        color: red;
+        font-weight: bold;
+    }
+
+    button.confirmPayButton {
+        margin: 20px 80px;
+        width: 67px;
+        height: 30px;
+        border: 1px solid #e67c00;
+        background-color: #f4a21D;
+        border-radius: 4px;
+        color: white;
+        font-size: 12px;
+    }
+
+    button.confirmPayButton:hover {
+        background-color: #f6ae30;
+    }
+</style>
+<body>
+<!--导航栏-->
+<nav class="top">
+    <a href="#nowhere">
+        <span class="glyphicon glyphicon-home redColor"></span>
+        天猫首页
+    </a>
+    <span>喵，欢迎来天猫</span>
+    <a href="#nowhere">tmalltest</a>
+    <a href="#nowhere">退出</a>
+    <span class="pull-right">
+			<a href="#nowhere">我的订单</a>
+			<a href="#nowhere">
+				<span class="glyphicon glyphicon-shopping-cart redColor "></span>
+				购物车<strong>5</strong>件
+
+			</a>
+		</span>
+</nav>
+<!--搜索-->
+<div>
+    <a href="#nowhere">
+        <img alt="天猫" src="image/simpleLogo.png" class="simpleLogo" id="simpleLogo">
+    </a>
+    <form method="post">
+        <div class="simpleSearchDiv pull-right">
+            <input type="text" name="keyword" placeholder="平衡车 原汁机"/>
+            <button type="button" class="searchButton">搜天猫</button>
+            <div class="searchBelow">
+				<span>
+					<a href="#nowhere">冰箱</a>
+					<span>|</span>
+				</span>
+                <span>
+					<a href="#nowhere">空调</a>
+					<span>|</span>
+				</span>
+                <span>
+					<a href="#nowhere">女表</a>
+					<span>|</span>
+				</span>
+                <span>
+					<a href="#nowhere">男表</a>
+					<span>|</span>
+				</span>
+            </div>
+        </div>
+    </form>
+    <div style="clear: both;"></div>
+</div>
+<div class="confirmPayPageDiv">
+    <div class="confirmPayImageDiv">
+        <img src="image/site/comformPayFlow.png"/>
+        <div class="confirmPayTime1">
+            2016-09-14 11:14:45
+        </div>
+        <div class="confirmPayTime2">
+            2016-09-14 11:14:47
+        </div>
+        <div class="confirmPayTime3">
+            yyyy-MM-dd HH:mm:ss
+        </div>
+    </div>
+    <div class="confirmPayOrderInfoDiv">
+        <div class="confirmPayOrderInfoText">
+            我已收到货，同意支付宝付款
+        </div>
+    </div>
+    <div class="confirmPayOrderItemDiv">
+        <div class="confirmPayOrderItemText">订单信息</div>
+        <table class="confirmPayOrderItemTable">
+            <thead>
+            <tr>
+                <th colspan="2">宝贝</th>
+                <th width="120px">单价</th>
+                <th width="120px">数量</th>
+                <th width="120px">商品总价</th>
+                <th width="120px">运费</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <img src="image/productSingle_middle/5848.jpg" width="50px"/>
+                </td>
+                <td class="confirmPayOrderItemProductLink">
+                    <a href="#nowhere">罗宾 钢带女表 女士腕表 水钻夜光防水石英表 潮流时尚复古手表女</a>
+                </td>
+                <td>￥990.00</td>
+                <td>1</td>
+                <td><span class="conformPayProductPrice">￥792.00</span></td>
+                <td><span>快递 ： 0.00 </span></td>
+            </tr>
+            <tr>
+                <td><img width="50px" src="image/productSingle_middle/3676.jpg"></td>
+                <td class="confirmPayOrderItemProductLink">
+                    <a href="#nowhere">科沃斯地宝凌云扫地机器人WiFi智能家用吸尘器超薄全自动洗擦地机</a>
+                </td>
+                <td>￥5,680.00</td>
+                <td>1</td>
+                <td><span class="conformPayProductPrice">￥3,692.00</span></td>
+                <td><span>快递 ： 0.00 </span></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="confirmPayOrderItemText pull-right">
+            实付款： <span class="confirmPayOrderItemSumPrice">￥4,484.00</span>
+        </div>
+    </div>
+    <div class="confirmPayOrderDetailDiv">
+        <table class="confirmPayOrderDetailTable">
+            <tbody>
+            <tr>
+                <td>订单编号:</td>
+                <td>201609141114454899001
+                    <img src="image/site/confirmOrderTmall.png" width="23px"/></td>
+            </tr>
+            <tr>
+                <td>卖家昵称：</td>
+                <td>天猫商铺<span class="confirmPayOrderDetailWangWangGif"></span></td>
+            </tr>
+            <tr>
+                <td>收货信息：</td>
+                <td>北京市 朝阳区 天安门 4栋二单元 490，朝阳群众， 15800000000，10000</td>
+            </tr>
+            <tr>
+                <td>成交时间：</td>
+                <td>2016-09-14 11:14:45</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="confirmPayButtonDiv">
+        <div class="confirmPayWarning">请收到货后，再确认收货！否则您可能钱货两空！</div>
+        <a href="#nowhere">
+            <button class="confirmPayButton">确认支付</button>
+        </a>
+    </div>
+</div>
+<!--脚本文件上-->
+<div style="display: block;" class="footer" id="footer01">
+    <div class="footer_ensure" id="footer_ensure">
+        <a href="#nowhere">
+            <img alt="承诺保证" src="image/ensure.png">
+        </a>
+    </div>
+    <div class="footer_desc" id="footer_desc">
+        <div class="descColumn">
+            <span class="descColumnTitle">购物指南</span>
+            <a href="#nowhere">免费注册</a>
+            <a href="#nowhere">开通支付宝</a>
+            <a href="#nowhere">支付宝充值</a>
+        </div>
+
+        <div class="descColumn">
+            <span class="descColumnTitle">天猫保障</span>
+            <a href="#nowhere">发票保障</a>
+            <a href="#nowhere">售后规则</a>
+            <a href="#nowhere">缺货赔付</a>
+        </div>
+        <div class="descColumn">
+            <span class="descColumnTitle">支付方式</span>
+            <a href="#nowhere">快捷支付</a>
+            <a href="#nowhere">信用卡</a>
+            <a href="#nowhere">蚂蚁花呗</a>
+            <a href="#nowhere">货到付款</a>
+        </div>
+        <div class="descColumn">
+            <span class="descColumnTitle">商家服务</span>
+            <a href="#nowhere">商家入驻</a>
+            <a href="#nowhere">商家中心</a>
+            <a href="#nowhere">天猫智库</a>
+            <a href="#nowhere">天猫规则</a>
+            <a href="#nowhere">物流服务</a>
+            <a href="#nowhere">喵言喵语</a>
+            <a href="#nowhere">运营服务</a>
+        </div>
+        <div class="descColumn">
+            <span class="descColumnTitle">手机天猫</span>
+            <a href="#nowhere">
+                <img alt="手机天猫" src="image/ma.png">
+            </a>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<!--脚本文件下-->
+<div class="footer" id="footer02">
+    <img alt="天猫" src="image/cateye.png" class="cateye" id="cateye">
+    <div class="copyright" id="copyright">
+        <div class="white_link">
+            <a href="#nowhere">关于天猫</a>
+            <a href="#nowhere">帮助中心</a>
+            <a href="#nowhere">开放平台</a>
+            <a href="#nowhere">诚聘英才</a>
+            <a href="#nowhere">联系我们</a>
+            <a href="#nowhere">网站合作</a>
+            <a href="#nowhere">法律声明</a>
+            <a href="#nowhere">知识产权</a>
+            <a href="#nowhere">廉正举报</a>
+        </div>
+
+        <div class="white_link">
+            <a href="#nowhere">阿里巴巴集团</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">淘宝网</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">天猫</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">聚划算</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">全球速卖通</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">阿里巴巴国际交易市场</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">1688</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">阿里妈妈</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">阿里旅行*去啊</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">阿里云计算</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">阿里通信</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">YunOS</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">万网</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">高德</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">优视</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">友盟</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">虾米</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">天天动听</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">来往</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">钉钉</a>
+            <span class="slash">|</span>
+            <a href="#nowhere">支付宝</a>
+            <span class="slash">|</span>
+        </div>
+        <div class="license">
+            <span>增值电信业务经营许可证： 浙B2-20110446</span>
+            <span>网络文化经营许可证：浙网文[2015]0295-065号</span>
+            <span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
+            <span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
+            <div class="copyRightYear">© 2003-2016 TMALL.COM 版权所有</div>
+            <div>
+                <img alt="证书" src="image/copyRight1.jpg"> <img alt="证书" src="image/copyRight2.jpg">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
